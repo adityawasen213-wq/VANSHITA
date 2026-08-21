@@ -47,6 +47,59 @@ iframe{width:100%;height:235px;border:0;display:block}
 .result{display:none;background:#ffeef3;border-radius:15px;padding:14px;margin-top:12px;line-height:1.55}
 #share{display:none;width:100%;margin-top:10px}
 @media(max-width:560px){h1{font-size:30px}.sticker{height:250px}.keys{grid-template-columns:repeat(3,59px)}.key{width:59px;height:49px}.two{grid-template-columns:1fr}iframe{height:205px}}
+
+/* FRONT_PAGE_FIT_FIX */
+#pass{
+  align-items:flex-start!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+}
+#pass .screen{
+  min-height:100dvh!important;
+  height:100dvh!important;
+  padding-top:54px!important;
+  padding-bottom:12px!important;
+  overflow:hidden!important;
+}
+#pass h1{
+  font-size:29px!important;
+  margin:0 0 2px!important;
+}
+#pass .sub{
+  font-size:15px!important;
+  margin:0 0 3px!important;
+}
+#pass .sticker{
+  width:min(230px,58vw)!important;
+  height:205px!important;
+  margin:2px auto 4px!important;
+}
+#pass .pin{
+  margin:4px 0 6px!important;
+}
+#pass .pin span{
+  width:38px!important;
+  height:42px!important;
+}
+#pass .keys{
+  gap:6px!important;
+}
+#pass .key{
+  width:55px!important;
+  height:43px!important;
+  font-size:17px!important;
+}
+#pass .hint{
+  margin-top:5px!important;
+  font-size:12px!important;
+}
+@media(max-height:720px){
+  #pass .screen{padding-top:48px!important}
+  #pass .sticker{height:170px!important;width:min(205px,52vw)!important}
+  #pass .key{width:51px!important;height:39px!important}
+  #pass .keys{gap:5px!important}
+}
+
 </style>
 </head>
 <body>
@@ -129,7 +182,11 @@ iframe{width:100%;height:235px;border:0;display:block}
 </div></div></section>
 
 <script>
-const pages=[...document.querySelectorAll('.page')];function show(id){pages.forEach(p=>p.classList.toggle('on',p.id===id));scrollTo(0,0);if(id==='promise')playPromiseLine();}
+
+if ('scrollRestoration' in history) history.scrollRestoration='manual';
+window.addEventListener('load',()=>window.scrollTo(0,0));
+
+const pages=[...document.querySelectorAll('.page')];function show(id){pages.forEach(p=>p.classList.toggle('on',p.id===id));window.scrollTo({top:0,left:0,behavior:'instant'});if(id==='promise')playPromiseLine();}
 const song=document.getElementById('song'),musicBtn=document.getElementById('musicBtn');let musicOn=false,stopTimer=null;
 async function playSong(start=0){try{song.currentTime=start;await song.play();musicOn=true;musicBtn.textContent='⏸️'}catch(e){}}
 function pauseSong(){song.pause();musicOn=false;musicBtn.textContent='▶️';if(stopTimer)clearTimeout(stopTimer)}
