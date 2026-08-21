@@ -10,9 +10,14 @@ h1{font-family:"Comic Sans MS",cursive;color:#a42d4e;font-size:38px;margin:8px 0
 .keys{display:grid;grid-template-columns:repeat(3,58px);gap:9px;justify-content:center}.key{width:58px;height:49px;border-radius:50%;border:1px solid #d47f94;background:#fff0f4;font-weight:800;font-size:18px;color:#7d3045}
 .hint{margin-top:12px;font-weight:800;color:#aa3657}.row{display:flex;justify-content:center;gap:15px;flex-wrap:wrap}.btn{border:0;border-radius:999px;background:#b93a58;color:#fff;padding:13px 25px;font-size:18px;font-weight:900;cursor:pointer}.ghost{background:#fff1f4;color:#a52e4d;border:2px solid #d8899c}
 .float{animation:bob 1.8s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-8px)}}.wrong{animation:shake 1s infinite}@keyframes shake{25%{transform:translateX(-7px) rotate(-2deg)}75%{transform:translateX(7px) rotate(2deg)}}
-.plan{display:block!important;overflow-y:auto;padding:20px}.planwrap{max-width:760px;margin:auto}.box{background:#fff8fa;padding:18px;border-radius:22px;text-align:left}label{display:block;font-weight:800;margin:11px 0 6px}input,select{width:100%;padding:12px;border:1px solid #ddb1bd;border-radius:12px;font-size:16px}iframe{width:100%;height:230px;border:0;border-radius:15px;margin:13px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}#result,#share{display:none}#result{margin-top:12px;background:#ffeaf0;padding:12px;border-radius:12px;line-height:1.55}
+.plan{overflow-y:auto;padding:20px}.plan.on{display:block}.planwrap{max-width:760px;margin:auto}.box{background:#fff8fa;padding:18px;border-radius:22px;text-align:left}label{display:block;font-weight:800;margin:11px 0 6px}input,select{width:100%;padding:12px;border:1px solid #ddb1bd;border-radius:12px;font-size:16px}iframe{width:100%;height:230px;border:0;border-radius:15px;margin:13px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}#result,#share{display:none}#result{margin-top:12px;background:#ffeaf0;padding:12px;border-radius:12px;line-height:1.55}
 @media(max-width:650px){.card{min-height:100dvh;border-radius:0;padding:24px 14px}.front{grid-template-columns:1fr;gap:5px}.sticker{width:220px;height:220px}h1{font-size:31px}.keybox{max-width:320px;margin:auto}.two{grid-template-columns:1fr}}
 </style></head><body>
+<audio id="bgm" loop preload="auto">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_2b0a9e64d6.mp3" type="audio/mpeg">
+</audio>
+<button id="musicBtn" aria-label="Music" style="position:fixed;right:16px;top:16px;z-index:9999;width:54px;height:54px;border:0;border-radius:50%;background:#fff5f8;color:#a52e4d;font-size:23px;box-shadow:0 8px 25px #7c274633;cursor:pointer">🎵</button>
+
 
 <section class="page on" id="p1"><div class="card"><h1>Enter a passcode</h1><div class="front">
 <img class="sticker float" src="https://cdn2.cdnstep.com/l3XP16i4jNpGBntzrSqF/37-1.thumb128.png" alt="Bubu and Dudu">
@@ -31,12 +36,32 @@ h1{font-family:"Comic Sans MS",cursive;color:#a42d4e;font-size:38px;margin:8px 0
 <label>🚗 Pickup Point</label><input id="pickup" placeholder="Exact pickup point / landmark">
 <label>📍 Place</label><select id="place">
 <option value="">Choose...</option>
-<option value="Government Medical College, Ratlam">⭐ Recommended: Government Medical College, Ratlam</option><optgroup label="☕ Cafés"><option>7Hills Restaurant &amp; Café, Ratlam</option><option>Chai Sutta Bar, Ratlam</option><option>Indiana The Cafe, Ratlam</option><option>Sadda Adda Cafe, Ratlam</option><option>Jalsara, Ratlam</option><option>Checkers Cafe, Ratlam</option><option>The Chai Shala Cafe and Party Zone, Ratlam</option><option>Chahapani, Ratlam</option><option>Coffee Calling, Ratlam</option><option>Classic Cafe, Ratlam</option></optgroup><optgroup label="🛕 Mandir"><option>Kalika Mata Temple, Ratlam</option><option>Mahalakshmi Temple, Manak Chowk, Ratlam</option><option>Shri Virupaksh Mahadev Temple, Bilpank</option><option>Bibrod Tirth, Ratlam</option><option>Shri Nageshwar Parshwanath Tirth, Ratlam</option><option>Shri Mehandi Kui Balaji Mandir, Ratlam</option><option>Ranjit Hanuman Mandir, Ratlam</option><option>Kaal Bhairav Ji Temple, Ratlam</option></optgroup><option>Gulab Chakkar, Ratlam</option><option>Dholawad Dam, Ratlam</option></select>
+<option value="Government Medical College, Ratlam">⭐ Recommended: Government Medical College, Ratlam</option><optgroup label="☕ Cafés"><option>7Hills Restaurant &amp; Café, Ratlam</option><option>Chai Sutta Bar, Ratlam</option><option>Indiana The Cafe, Ratlam</option><option>Sadda Adda Cafe, Ratlam</option><option>Jalsara, Ratlam</option><option>Checkers Cafe, Ratlam</option><option>The Chai Shala Cafe and Party Zone, Ratlam</option><option>Chahapani, Ratlam</option><option>Coffee Calling, Ratlam</option><option>Classic Cafe, Ratlam</option></optgroup><optgroup label="🛕 Mandir"><option>Kalika Mata Temple, Ratlam</option><option>Mahalakshmi Temple, Manak Chowk, Ratlam</option><option>Shri Virupaksh Mahadev Temple, Bilpank</option><option>Bibrod Tirth, Ratlam</option><option>Shri Nageshwar Parshwanath Tirth, Ratlam</option><option>Shri Mehandi Kui Balaji Mandir, Ratlam</option><option>Ranjit Hanuman Mandir, Ratlam</option><option>Kaal Bhairav Ji Temple, Ratlam</option></optgroup><optgroup label="🌳 Garden / Ghumne ki jagah">
+<option>Gulab Chakkar, Ratlam</option>
+<option>Dholawad Dam, Ratlam</option>
+<option>Cactus Garden, Sailana, Ratlam</option>
+<option>Kedareshwar Temple & Waterfall, Sailana, Ratlam</option>
+<option>Kharmour Bird Sanctuary, Sailana, Ratlam</option>
+<option>Hussain Tekri, Jaora, Ratlam</option>
+</optgroup></select>
 <iframe id="map" src="https://www.google.com/maps?q=Government%20Medical%20College%2C%20Ratlam%2C%20Madhya%20Pradesh&output=embed"></iframe>
 <div class="two"><div><label>📅 Date</label><input id="date" type="date"></div><div><label>🕒 Time</label><input id="time" type="time"></div></div>
 <button class="btn" id="confirm" style="width:100%;margin-top:13px">Confirm Date Plan ❤️</button><div id="result"></div><button class="btn" id="share" style="width:100%;margin-top:10px">Send on WhatsApp ❤️</button></div></div></section>
 
 <script>
+const bgm=document.getElementById('bgm'),musicBtn=document.getElementById('musicBtn');
+let musicStarted=false;
+async function startMusic(){
+  if(musicStarted)return;
+  try{await bgm.play();musicStarted=true;musicBtn.textContent='🔊'}catch(e){}
+}
+document.addEventListener('pointerdown',startMusic,{once:true});
+musicBtn.onclick=async(e)=>{
+  e.stopPropagation();
+  if(bgm.paused){try{await bgm.play();musicStarted=true;musicBtn.textContent='🔊'}catch(e){}}
+  else{bgm.pause();musicBtn.textContent='🔇'}
+};
+
 const ps=[...document.querySelectorAll('.page')];function show(id){ps.forEach(p=>p.classList.toggle('on',p.id===id));scrollTo(0,0)}
 let code='';const dots=[...document.querySelectorAll('#pin i')];function draw(){dots.forEach((d,i)=>d.textContent=i<code.length?'•':'')}
 function check(){if(code==='2303')show('special');else show('wrong');code='';draw()}
