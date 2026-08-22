@@ -103,6 +103,10 @@ iframe{width:100%;height:235px;border:0;display:block}
 #promise .screen{background:radial-gradient(circle at 50% 42%,#f22b3b 0%,#c70718 58%,#8d000b 100%)!important}
 #promise .promiseImg{background:transparent!important;box-shadow:none!important;object-fit:contain!important}
 #promise .fingerPng{height:330px!important;width:min(330px,82vw)!important}
+/* FINAL_POLISH */
+#promise .screen{background:linear-gradient(180deg,#d9081c,#b90012)!important;padding-top:70px!important}
+#promise .promiseImg{height:285px!important;width:240px!important;object-fit:contain!important;filter:drop-shadow(0 12px 18px rgba(80,0,0,.22))!important;margin:8px auto 10px!important}
+#promise h1{font-size:34px!important;line-height:1.12!important;margin:4px auto 8px!important;max-width:390px!important}
 </style>
 </head>
 <body>
@@ -228,6 +232,14 @@ tomorrowBtn.onclick=()=>{date.value=tomorrowStr;show('plan')};chooseBtn.onclick=
 place.onchange=()=>map.src='https://www.google.com/maps?q='+encodeURIComponent((place.value||'Ratlam')+', Madhya Pradesh')+'&output=embed';
 let msg='';confirm.onclick=()=>{const pu=pickup.value.trim(),pl=place.value,d=date.value,t=time.value;if(!pu||!pl||!d||!t){result.style.display='block';result.textContent='Pickup, place, date aur time sab choose karo 🥺';share.style.display='none';return}const pd=new Date(d+'T00:00:00').toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long',year:'numeric'}),pt=new Date('2000-01-01T'+t).toLocaleTimeString([],{hour:'numeric',minute:'2-digit'});msg=`❤️ OUR DATE PLAN ❤️\n🚗 Pickup: ${pu}\n📍 Place: ${pl}\n📅 Date: ${pd}\n🕒 Time: ${pt}`;result.style.display='block';result.innerHTML='<b>Plan Confirmed ❤️</b><br>'+msg.replaceAll('\n','<br>');share.style.display='block'};
 share.onclick=()=>window.open('https://wa.me/916265846172?text='+encodeURIComponent(msg),'_blank');
+
+window.addEventListener('DOMContentLoaded',()=>{
+ const sp=document.getElementById('special');
+ if(sp){
+  const no=[...sp.querySelectorAll('button')].find(b=>/^\s*NO/i.test(b.textContent));
+  if(no) no.onclick=()=>{if(typeof whyText!=='undefined')whyText.textContent='Why did u click NO!? 🥺';show('why')};
+ }
+});
 </script>
 </body>
 </html>
