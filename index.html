@@ -21,6 +21,5 @@ retry.onclick=()=>show('pass');spyes.onclick=()=>show('proposal');spno.onclick=(
 🚗 Pickup Point : ${pickup.value}
 📍 Place : ${place.value}
 📅 Date : ${date.value}
-🕒 Time : ${time.value}`;summary.innerHTML=msg.replaceAll('
-','<br><br>');show('final')};share.onclick=()=>window.open('https://wa.me/916265846172?text='+encodeURIComponent(msg),'_blank');
+🕒 Time : ${time.value}`;summary.innerHTML=msg.replace(/\n/g,'<br><br>');show('final')};share.onclick=()=>window.open('https://wa.me/916265846172?text='+encodeURIComponent(msg),'_blank');
 </script></body></html>
